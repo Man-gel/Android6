@@ -22,6 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Contacto"
+            android:label="@string/title_activity_contacto" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.contactos.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
