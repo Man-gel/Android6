@@ -8,18 +8,55 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.contactos.MainActivity" >
 
+    <RelativeLayout
+        android:id="@+id/rel_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_alignLeft="@+id/linearlayout"
+        android:layout_alignRight="@+id/linearlayout"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/etBusqueda"
+            android:layout_width="220dp"
+            android:layout_height="22dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:gravity="left" />
+        
+        <Button
+            android:id="@+id/button1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="22dp"
+            android:layout_height="8dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:layout_toRightOf="@+id/etBusqueda"
+            android:text="Buscar" />
+
+        
+    </RelativeLayout>
+    
     <LinearLayout
         android:id="@+id/linearlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_lay"
         android:orientation="vertical" >
+        
+
         <ListView
             android:id="@+id/lv_personajes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
         </ListView>
 
     </LinearLayout>
 
+    
 </RelativeLayout>
