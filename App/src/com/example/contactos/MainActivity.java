@@ -1,12 +1,11 @@
 package com.example.contactos;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +30,31 @@ public class MainActivity extends ListActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void CrearInfo()
+	{
+		final String[] characters = 
+		{
+				"Albert Einstein",
+				"Stephen Hawking",
+				"Andy Irons",
+				"Kurt Kobain",
+				"Pablo Neruda",
+				"Richard Stallman",
+				"Nikola Tesla",
+				"Linus Torvalds"				
+		};		
+		final Integer[] imageId = 
+		{
+				R.drawable.einstein,
+				R.drawable.hawking,
+				R.drawable.irons,
+				R.drawable.kobain,
+				R.drawable.neruda,
+				R.drawable.stallman,
+				R.drawable.tesla,
+				R.drawable.torvalds					
+		};
 	}
 }
