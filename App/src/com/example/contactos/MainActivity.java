@@ -1,9 +1,13 @@
 package com.example.contactos;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 public class MainActivity extends Activity {
 	
@@ -11,6 +15,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		crearInfo();
 	}
 
 	@Override
@@ -32,7 +37,7 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private void CrearInfo()
+	private void crearInfo()
 	{
 		final String[] characters = 
 		{
@@ -56,5 +61,18 @@ public class MainActivity extends Activity {
 				R.drawable.tesla,
 				R.drawable.torvalds					
 		};
+		MiAdapter adapter = new MiAdapter(MainActivity.this,imageId,characters);
+		ListView list = (ListView)findViewById(R.id.lv_personajes);
+		list.setAdapter(adapter);
+		list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+            	Intent intent = new Intent(MainActivity.this, Contacto.class);
+            	intent.putExtra("id",String.valueOf(position+1));
+				startActivity(intent);
+            }
+        });
 	}
 }

@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MiAdapter extends ArrayAdapter<String> {
-	private Activity contexto;
-	private Integer[] idsImagenes;
-	private String[] datos;
+	private final Activity contexto;
+	private final Integer[] idsImagenes;
+	private final String[] datos;
 
 	public MiAdapter(Activity context, Integer[] imagenes, String[] objects) {
 		super(context, R.layout.row_list, objects);

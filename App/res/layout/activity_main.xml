@@ -23,21 +23,19 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:ems="10"
-            android:gravity="left" />
+            android:inputType="text"
+            android:ems="10" />
         
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btn_buscar"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="22dp"
             android:layout_height="8dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_weight="1"
             android:layout_toRightOf="@+id/etBusqueda"
-            android:text="Buscar" />
-
+            android:text="@string/btn_search" />
         
     </RelativeLayout>
     
