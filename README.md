@@ -7,6 +7,9 @@ link de referencias:
 
 http://developer.android.com/guide/topics/ui/layout/listview.html#Loader
 
+https://github.com/codepath/android-custom-array-adapter-demo  (Este repo me ayudó mucho!)
+
+
 Para formar el ArrayAdapter personalizado:
 
 https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
