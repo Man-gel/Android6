@@ -1,5 +1,7 @@
 package com.example.contactos;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,29 +41,17 @@ public class MainActivity extends Activity {
 	
 	private void crearInfo()
 	{
-		final String[] characters = 
-		{
-				"Albert Einstein",
-				"Stephen Hawking",
-				"Andy Irons",
-				"Kurt Kobain",
-				"Pablo Neruda",
-				"Richard Stallman",
-				"Nikola Tesla",
-				"Linus Torvalds"				
-		};		
-		final Integer[] imageId = 
-		{
-				R.drawable.einstein,
-				R.drawable.hawking,
-				R.drawable.irons,
-				R.drawable.kobain,
-				R.drawable.neruda,
-				R.drawable.stallman,
-				R.drawable.tesla,
-				R.drawable.torvalds					
-		};
-		MiAdapter adapter = new MiAdapter(MainActivity.this,imageId,characters);
+		ArrayList<Person> lista = new ArrayList<Person>();
+		lista.add( new Person(R.drawable.einstein ,"Albert Einstein","778 2359776") );
+		lista.add( new Person(R.drawable.hawking,"Stephen Hawking", "651 5763678") );
+		lista.add( new Person(R.drawable.irons ,"Andy Irons", "555 5454267") );
+		lista.add( new Person(R.drawable.kobain ,"Kurt Kobain","212 6545746") );
+		lista.add( new Person(R.drawable.neruda ,"Pablo Neruda","988 7664327") );
+		lista.add( new Person(R.drawable.stallman ,"Richard Stallman","877 6534522") );
+		lista.add( new Person(R.drawable.tesla ,"Nikola Tesla","33 12645784") );
+		lista.add( new Person(R.drawable.torvalds ,"Linus Torvalds","561 7665430") );		
+		lista.trimToSize();
+		MiAdapter adapter = new MiAdapter(MainActivity.this,lista);
 		ListView list = (ListView)findViewById(R.id.lv_personajes);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -70,7 +60,7 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
             	Intent intent = new Intent(MainActivity.this, Contacto.class);
-            	intent.putExtra("id",String.valueOf(position+1));
+            	intent.putExtra("id",String.valueOf(position));
 				startActivity(intent);
             }
         });

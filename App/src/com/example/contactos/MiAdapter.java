@@ -1,6 +1,7 @@
 package com.example.contactos;
 
-import android.annotation.SuppressLint;
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,28 +10,48 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MiAdapter extends ArrayAdapter<String> {
-	private final Activity contexto;
-	private final Integer[] idsImagenes;
-	private final String[] datos;
-
-	public MiAdapter(Activity context, Integer[] imagenes, String[] objects) {
-		super(context, R.layout.row_list, objects);
-		contexto = context;
-		idsImagenes = imagenes;
-		datos = objects;
-	}
+public class MiAdapter extends ArrayAdapter<Person> {
 	
-	@SuppressLint({ "InflateParams", "ViewHolder" })
+	private static class ViewHolder
+	{
+		private TextView itmView;
+		private ImageView imgView;
+	}
+
+	public MiAdapter(Activity context, ArrayList<Person> objects) {
+		super(context, 0);
+		for(Person p : objects)
+		{
+			this.add(p);			
+		}
+		this.notifyDataSetChanged();
+	}	
+
 	@Override
 	public View getView(int position, View view, ViewGroup parent)
 	{
-		LayoutInflater inflater = contexto.getLayoutInflater();
-		View row = inflater.inflate(R.layout.row_list, null,true);
-		TextView txtTitle = (TextView) row.findViewById(R.id.txt);
-		ImageView imageView = (ImageView) row.findViewById(R.id.img);
-		txtTitle.setText(datos[position]);
-		imageView.setImageResource(idsImagenes[position]);
-		return row;		
+		ViewHolder viewHolder;
+		Person registro = getItem(position);
+		if(view == null)
+		{
+			view = LayoutInflater.from(getContext()).inflate(R.layout.row_list, parent,false);
+			viewHolder = new ViewHolder();
+			viewHolder.itmView = (TextView)view.findViewById(R.id.txtV);
+			viewHolder.imgView = (ImageView)view.findViewById(R.id.imgV);
+			view.setTag(viewHolder);
+		}
+		else
+		{
+			viewHolder = (ViewHolder)view.getTag();
+		}
+		if(registro != null)
+		{
+			viewHolder.itmView.setText(registro.txtView);
+			viewHolder.imgView.setImageResource(registro.imgView);
+			//viewHolder.imgView.setImageResource();
+			//txtView.setText(registro.txtView);
+			//imgV.setImageResource(registro.imgView);			
+		}
+		return view;		
 	}
 }
