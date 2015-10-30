@@ -29,6 +29,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.contactos.MainActivity" />
         </activity>
+        <activity
+            android:name=".Detalle"
+            android:label="@string/title_activity_detalle" >
+        </activity>
     </application>
 
 </manifest>

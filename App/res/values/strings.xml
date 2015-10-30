@@ -6,5 +6,7 @@
     <string name="title_activity_contacto">Contacto</string>
     <string name="btn_search">Buscar</string>
     <string name="contentImg">Personaje</string>
+    <string name="title_activity_detalle">Detalle</string>
+    <string name="detalleInfo">Info</string>
 
 </resources>

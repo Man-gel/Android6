@@ -8,4 +8,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.contactos.Contacto" >
 
+            <ImageView
+                android:id="@+id/iv_detalleImg"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="17dp"
+                android:contentDescription="@string/contentImg"
+                android:src="@drawable/einstein" />
+
+            <TextView
+                android:id="@+id/tv_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_detalleImg"
+                android:layout_centerHorizontal="true"
+                android:text="@string/detalleInfo"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_nombre"
+                android:layout_below="@+id/tv_nombre"
+                android:layout_marginTop="25dp"
+                android:text="@string/detalleInfo"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
 </RelativeLayout>
