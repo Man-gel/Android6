@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 	
 	private void crearInfo()
 	{
-		ArrayList<Person> lista = new ArrayList<Person>();
+		final ArrayList<Person> lista = new ArrayList<Person>();
 		lista.add( new Person(R.drawable.einstein ,"Albert Einstein","778 2359776") );
 		lista.add( new Person(R.drawable.hawking,"Stephen Hawking", "651 5763678") );
 		lista.add( new Person(R.drawable.irons ,"Andy Irons", "555 5454267") );
@@ -60,7 +60,9 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
             	Intent intent = new Intent(MainActivity.this, Contacto.class);
-            	intent.putExtra("id",String.valueOf(position));
+            	intent.putExtra("nombre",String.valueOf(lista.get(position).txtView));
+            	intent.putExtra("idImagen", Integer.valueOf(lista.get(position).imgView));
+            	intent.putExtra("phone", String.valueOf(lista.get(position).phone) );
 				startActivity(intent);
             }
         });
