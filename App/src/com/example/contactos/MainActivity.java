@@ -42,23 +42,24 @@ public class MainActivity extends Activity {
 	private void crearInfo()
 	{
 		final ArrayList<Person> lista = new ArrayList<Person>();
+			
 		lista.add( new Person(R.drawable.einstein ,"Albert Einstein","778 2359776") );
 		lista.add( new Person(R.drawable.hawking,"Stephen Hawking", "651 5763678") );
 		lista.add( new Person(R.drawable.irons ,"Andy Irons", "555 5454267") );
 		lista.add( new Person(R.drawable.kobain ,"Kurt Kobain","212 6545746") );
 		lista.add( new Person(R.drawable.neruda ,"Pablo Neruda","988 7664327") );
 		lista.add( new Person(R.drawable.stallman ,"Richard Stallman","877 6534522") );
-		lista.add( new Person(R.drawable.tesla ,"Nikola Tesla","33 12645784") );
-		lista.add( new Person(R.drawable.torvalds ,"Linus Torvalds","561 7665430") );		
-		lista.trimToSize();
+		lista.add( new Person(R.drawable.torvalds ,"Linus Torvalds","561 7665430") );
+		
 		MiAdapter adapter = new MiAdapter(MainActivity.this,lista);
-		ListView list = (ListView)findViewById(R.id.lv_personajes);
-		list.setAdapter(adapter);
-		list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		ListView listV = (ListView)findViewById(R.id.lv_personajes);
+		listV.setAdapter(adapter);
+		listV.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
+            	            	System.out.format("** MAINACTIVITY L62: position: %d\n",position);
             	Intent intent = new Intent(MainActivity.this, Contacto.class);
             	intent.putExtra("nombre",String.valueOf(lista.get(position).txtView));
             	intent.putExtra("idImagen", Integer.valueOf(lista.get(position).imgView));

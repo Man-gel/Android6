@@ -1,7 +1,6 @@
 package com.example.contactos;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MiAdapter extends ArrayAdapter<Person> {
+public class MiAdapter extends ArrayAdapter<Person> 
+{
 	
 	private static class ViewHolder
 	{
@@ -18,20 +18,16 @@ public class MiAdapter extends ArrayAdapter<Person> {
 		private ImageView imgView;
 	}
 
-	public MiAdapter(Activity context, ArrayList<Person> objects) {
-		super(context, 0);
-		for(Person p : objects)
-		{
-			this.add(p);			
-		}
-		this.notifyDataSetChanged();
+	public MiAdapter(Activity context, ArrayList<Person> objects) 
+	{
+		super(context, 0,objects);
 	}	
 
 	@Override
 	public View getView(int position, View view, ViewGroup parent)
 	{
 		ViewHolder viewHolder;
-		Person registro = getItem(position);
+		Person registro = (Person)getItem(position);
 		if(view == null)
 		{
 			view = LayoutInflater.from(getContext()).inflate(R.layout.row_list, parent,false);
@@ -47,10 +43,8 @@ public class MiAdapter extends ArrayAdapter<Person> {
 		if(registro != null)
 		{
 			viewHolder.itmView.setText(registro.txtView);
+			System.out.format("**MIADAPTER L50: txtV: %s imgV: %d\n",registro.txtView,registro.imgView);
 			viewHolder.imgView.setImageResource(registro.imgView);
-			//viewHolder.imgView.setImageResource();
-			//txtView.setText(registro.txtView);
-			//imgV.setImageResource(registro.imgView);			
 		}
 		return view;		
 	}

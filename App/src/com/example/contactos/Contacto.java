@@ -20,6 +20,7 @@ public class Contacto extends Activity
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contacto);
+		
 		tvNombre = (TextView)findViewById(R.id.tv_nombre);
 		tvNumero = (TextView)findViewById(R.id.tv_phone);
 		ivImagen = (ImageView)findViewById(R.id.iv_detalleImg);
