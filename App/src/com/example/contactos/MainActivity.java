@@ -3,26 +3,30 @@ package com.example.contactos;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
 	private EditText editT;
 	private final ArrayList<Person> lista = new ArrayList<Person>();
 	private ListView listV;
+	private MiAdapter adapter ;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		editT = (EditText)findViewById(R.id.btn_buscar);
+		editT = (EditText)findViewById(R.id.etBusqueda);
 		crearInfo();
 	}
 
@@ -54,7 +58,7 @@ public class MainActivity extends Activity {
 		lista.add( new Person(R.drawable.neruda ,"Pablo Neruda","988 7664327") );
 		lista.add( new Person(R.drawable.stallman ,"Richard Stallman","877 6534522") );
 		lista.add( new Person(R.drawable.torvalds ,"Linus Torvalds","561 7665430") );
-		MiAdapter adapter = new MiAdapter(MainActivity.this,lista);
+		adapter = new MiAdapter(MainActivity.this,lista);
 		listV = (ListView)findViewById(R.id.lv_personajes);
 		listV.setAdapter(adapter);
 		listV.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -72,19 +76,33 @@ public class MainActivity extends Activity {
         });
 	}
 	
-	private void listenerTecleo()
-	{
-		
-	}
+	
 	public void btnBusqueda(View v)
 	{
 		String info = editT.getText().toString();
+		boolean noPresente = true;
 		for(Person p : lista)
 		{
-			if(p.txtView.equalsIgnoreCase(info))
+			if(p.txtView.contains(info))
 			{
-				
-			}
+				Intent intent = new Intent(MainActivity.this, Contacto.class);
+				intent.putExtra("nombre",String.valueOf(p.txtView));
+            	intent.putExtra("idImagen", Integer.valueOf(p.imgView));
+            	intent.putExtra("phone", String.valueOf(p.phone) );
+            	editT.setText("");
+            	noPresente = false;
+				startActivity(intent);
+			}				
 		}
+		if(noPresente)
+			mostrarToast("No se encontraron coincidencias");
+	}
+	
+	private void mostrarToast(CharSequence mensaje)
+	{
+		Context contexto = getApplicationContext();
+		Toast toast = Toast.makeText(contexto, mensaje, 3);
+		toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+		toast.show();	
 	}
 }

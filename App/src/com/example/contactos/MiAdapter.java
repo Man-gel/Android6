@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MiAdapter extends ArrayAdapter<Person> 
+public class MiAdapter extends ArrayAdapter<Person> implements Filterable
 {
 	
 	private static class ViewHolder
