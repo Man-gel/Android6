@@ -38,7 +38,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/etBusqueda"
-            android:text="@string/btn_search" />
+            android:text="@string/btn_search"
+            android:onClick="btnBusqueda" />
         
     </RelativeLayout>
     

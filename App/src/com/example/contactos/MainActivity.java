@@ -9,14 +9,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
+	
+	private EditText editT;
+	private final ArrayList<Person> lista = new ArrayList<Person>();
+	private ListView listV;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		editT = (EditText)findViewById(R.id.btn_buscar);
 		crearInfo();
 	}
 
@@ -41,8 +47,6 @@ public class MainActivity extends Activity {
 	
 	private void crearInfo()
 	{
-		final ArrayList<Person> lista = new ArrayList<Person>();
-			
 		lista.add( new Person(R.drawable.einstein ,"Albert Einstein","778 2359776") );
 		lista.add( new Person(R.drawable.hawking,"Stephen Hawking", "651 5763678") );
 		lista.add( new Person(R.drawable.irons ,"Andy Irons", "555 5454267") );
@@ -50,9 +54,8 @@ public class MainActivity extends Activity {
 		lista.add( new Person(R.drawable.neruda ,"Pablo Neruda","988 7664327") );
 		lista.add( new Person(R.drawable.stallman ,"Richard Stallman","877 6534522") );
 		lista.add( new Person(R.drawable.torvalds ,"Linus Torvalds","561 7665430") );
-		
 		MiAdapter adapter = new MiAdapter(MainActivity.this,lista);
-		ListView listV = (ListView)findViewById(R.id.lv_personajes);
+		listV = (ListView)findViewById(R.id.lv_personajes);
 		listV.setAdapter(adapter);
 		listV.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
@@ -67,5 +70,21 @@ public class MainActivity extends Activity {
 				startActivity(intent);
             }
         });
+	}
+	
+	private void listenerTecleo()
+	{
+		
+	}
+	public void btnBusqueda(View v)
+	{
+		String info = editT.getText().toString();
+		for(Person p : lista)
+		{
+			if(p.txtView.equalsIgnoreCase(info))
+			{
+				
+			}
+		}
 	}
 }
