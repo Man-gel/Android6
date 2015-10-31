@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/iv_detalleImg"
                 android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:text="@string/detalleInfo"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -35,6 +36,7 @@
                 android:layout_below="@+id/tv_nombre"
                 android:layout_marginTop="25dp"
                 android:text="@string/detalleInfo"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_centerVertical="true" />
 
 </RelativeLayout>
